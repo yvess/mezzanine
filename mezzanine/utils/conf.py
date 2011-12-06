@@ -71,7 +71,7 @@ def set_dynamic_settings(s):
 
     # Set up filebrowser paths.
     if s.get("PACKAGE_NAME_FILEBROWSER") in s["INSTALLED_APPS"]:
-        s["FILEBROWSER_URL_FILEBROWSER_MEDIA"] = "/filebrowser/media/"
+        s["FILEBROWSER_URL_FILEBROWSER_MEDIA"] = "/static/filebrowser/"
         fb_path = path_for_import(s["PACKAGE_NAME_FILEBROWSER"])
         fb_media_path = os.path.join(fb_path, "media", "filebrowser")
         s["FILEBROWSER_PATH_FILEBROWSER_MEDIA"] = fb_media_path
@@ -161,12 +161,13 @@ def set_dynamic_settings(s):
             del s["TIME_ZONE"]
 
     # If a theme is defined then add its template path to the
-    # template dirs.
+    # template dirs and ddd theme to installed apps.
     theme = s.get("THEME")
     if theme:
         theme_templates = os.path.join(path_for_import(theme), "templates")
         s["TEMPLATE_DIRS"] = (theme_templates,) + tuple(s["TEMPLATE_DIRS"])
-
+        s["INSTALLED_APPS"].append(theme)
+        
     # Remaining code is for Django 1.1 support.
     if VERSION >= (1, 2, 0):
         return

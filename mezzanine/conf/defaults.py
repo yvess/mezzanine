@@ -404,7 +404,7 @@ register_setting(
         "CONTENT_MEDIA_URL", "DEV_SERVER", "FORMS_USE_HTML5",
         "GRAPPELLI_INSTALLED", "GOOGLE_ANALYTICS_ID",
         "PAGES_MENU_SHOW_ALL", "SITE_TITLE", "SITE_TAGLINE",
-        "RATINGS_MAX",
+        "RATINGS_MAX", "THEME",
     ),
 )
 
